@@ -1,7 +1,6 @@
 FROM quay.io/fedora/fedora:38
 MAINTAINER bjozsa bjozsa@jinkit.com
 
-ENV WORKDIR=/opt/AmiiboConverter/
 ENV DATA=/opt/AmiiboConverter/data
 
 RUN mkdir -p $DATA

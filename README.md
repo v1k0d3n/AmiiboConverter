@@ -29,6 +29,60 @@ When inputing amiibo ID, filename can be set by adding name and a semicolon befo
 
 ## What does it require?
 
+### Running via Docker/Podman Container
+
+If you have backed up Amiibo data like the following:
+```
+❯ tree ~/Downloads/amiino-tloz
+/Users/v1k0d3n/Downloads/amiino-tloz
+├──-BotW
+│   ├── Bokoblin.bin
+│   ├── Daruk.bin
+│   ├── Guardian.bin
+│   ├── Link (Archer).bin
+│   ├── Link (Rider).bin
+│   ├── Mipha.bin
+│   ├── Revali.bin
+│   ├── Urbosa.bin
+│   └── Zelda.bin
+```
+
+You can run the container like this (taking note of the volume mount):
+```
+podman run -v /Users/v1k0d3n/Downloads/amiino-tloz:/opt/AmiiboConverter/data \
+  quay.io/v1k0d3n/amiiboconverter:latest \
+  -m bin2nfc -i BotW -o ./nfc/BotW
+```
+
+Which will result in the following:
+```
+❯ tree ~/Downloads/amiino-tloz
+/Users/v1k0d3n/Downloads/amiino-tloz
+├── BotW
+│   ├── Bokoblin.bin
+│   ├── Daruk.bin
+│   ├── Guardian.bin
+│   ├── Link (Archer).bin
+│   ├── Link (Rider).bin
+│   ├── Mipha.bin
+│   ├── Revali.bin
+│   ├── Urbosa.bin
+│   └── Zelda.bin
+└── nfc
+    └── BotW
+        ├── Bokoblin.nfc
+        ├── Daruk.nfc
+        ├── Guardian.nfc
+        ├── Link (Archer).nfc
+        ├── Link (Rider).nfc
+        ├── Mipha.nfc
+        ├── Revali.nfc
+        ├── Urbosa.nfc
+        └── Zelda.nfc
+```
+
+### Running via Python
+
 Python 3.8 or newer
 
 You need the libraries in `requirements.txt`, install them using something like `python -m pip install -r requirements.txt`

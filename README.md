@@ -31,7 +31,9 @@ When inputing amiibo ID, filename can be set by adding name and a semicolon befo
 
 ### Running via Docker/Podman Container
 
-If you have backed up Amiibo data like the following:
+Below is an example of running this project as a Docker/Podman container.
+
+If you have backed up Amiibo data you may have a directory that looks like the following:
 ```
 ❯ tree ~/Downloads/amiino-tloz
 /Users/v1k0d3n/Downloads/amiino-tloz
